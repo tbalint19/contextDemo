@@ -1,6 +1,11 @@
 import { useEffect } from "react"
+import { useMessages } from "../contexts/chatContext"
 
-const Navbar = ({ hasAny }) => {
+const Navbar = () => {
+
+    const {
+        hasAny,
+      } = useMessages()
 
 
     return (

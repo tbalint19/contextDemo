@@ -1,30 +1,34 @@
-import { useState } from 'react'
 import './App.css'
 import Chat from './components/Chat'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import { notAHook } from './hooks/useMessages'
+import { useInput } from './hooks/useInput'
+import { useMessages } from './contexts/chatContext'
 
 function App() {
 
   const {
-    loading,
-    messages,
-    deleteAll,
-    loadMessages,
-    hasAny,
     msgCount
-  } = notAHook()
+  } = useMessages()
+
+  const usernameInput = useInput()
+  const passwordInput = useInput()
+
+  const save = () => {
+    console.log(usernameInput.value)
+    console.log(passwordInput.value)
+    // http post
+  }
 
   return (
     <div className="App">
-      <Navbar hasAny={hasAny} />
-      <Chat
-        messages={messages}
-        deleteAll={deleteAll}
-        loading={loading}
-        loadMessages={loadMessages} />
-      <Footer msgCount={msgCount} />
+      <h1>{msgCount}</h1>
+      <input type="username" {...usernameInput} />
+      <input type="password" {...passwordInput} />
+      <button onClick={save}>Save</button>
+      <Navbar />
+      <Chat />
+      <Footer />
     </div>
   )
 }

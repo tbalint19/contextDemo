@@ -1,4 +1,10 @@
-const Footer = ({ msgCount }) => {
+import { useMessages } from "../contexts/chatContext"
+
+const Footer = () => {
+
+    const {
+        msgCount,
+      } = useMessages()
 
     return (
         <div>

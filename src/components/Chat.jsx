@@ -1,6 +1,13 @@
-import { useState } from "react"
+import { useMessages } from "../contexts/chatContext"
 
-const Chat = ({ messages, deleteAll, loadMessages, loading }) => {
+const Chat = () => {
+
+    const {
+        loading,
+        messages,
+        deleteAll,
+        loadMessages,
+      } = useMessages()
 
     return (
         <div>
